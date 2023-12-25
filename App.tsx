@@ -4,6 +4,7 @@ import AppNavigator from './src/navigation/AppNavigator';
 let n = 1;
 
 function App(): React.JSX.Element {
+  console.log('\x1Bc');
   console.log(`Componente App renderizou x${n++}`);
 
   return <AppNavigator />;
