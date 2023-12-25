@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
+import GlobalProvider from '../context/loading';
 import ContextScreen from '../screens/Context';
 import HomeScreen from '../screens/Home';
 import ReduxScreen from '../screens/Redux';
@@ -19,11 +20,13 @@ const Routes = (): React.JSX.Element => {
         component={ReduxScreen}
         options={{ title: 'Redux' }}
       />
-      <Stack.Screen
-        name="Context"
-        component={ContextScreen}
-        options={{ title: 'Context' }}
-      />
+      <Stack.Screen name="Context" options={{ title: 'Context' }}>
+        {() => (
+          <GlobalProvider>
+            <ContextScreen />
+          </GlobalProvider>
+        )}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };
