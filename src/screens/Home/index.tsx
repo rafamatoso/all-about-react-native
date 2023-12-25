@@ -1,30 +1,28 @@
-import React, { useEffect } from 'react';
-import { Text } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { Button, StyleSheet, View } from 'react-native';
 import { TScreens } from '../../design-system';
-import { loading as loadingCreator } from '../../redux/features/loading/loadingSlice';
 
-// let n = 1;
+const HomeScreen = ({ navigation }: any) => (
+  <TScreens title="HomeScreen Component">
+    <View style={styles.container}>
+      <Button
+        title="Go to Redux Screen"
+        onPress={() => navigation.navigate('Redux')}
+      />
 
-const HomeScreen = () => {
-  // console.log(`Componente HomeScreen com Redux renderizou x${n++}`);
+      <Button
+        title="Go to Context Screen"
+        onPress={() => navigation.navigate('Context')}
+      />
+    </View>
+  </TScreens>
+);
 
-  const loading = useSelector((state: any) => state.loading.value);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(loadingCreator());
-    }, 3000);
-  }, [dispatch]);
-
-  return (
-    loading && (
-      <TScreens>
-        <Text>HomeScreen Component</Text>
-      </TScreens>
-    )
-  );
-};
+const styles = StyleSheet.create({
+  container: {
+    gap: 15,
+    alignItems: 'center',
+  },
+});
 
 export default HomeScreen;
