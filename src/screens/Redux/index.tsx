@@ -18,7 +18,7 @@ const ReduxScreen = () => {
       }, 2000);
   }, [dispatch, loading]);
 
-  return !loading && <TScreens title="ReduxScreen Component" />;
+  return <TScreens title="ReduxScreen Component" loading={loading} />;
 };
 
 export default ReduxScreen;

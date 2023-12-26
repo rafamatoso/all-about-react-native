@@ -15,7 +15,9 @@ const ContextScreen = () => {
     }, 2000);
   }, []);
 
-  return !context.loading.show && <TScreens title="ContextScreen Component" />;
+  return (
+    <TScreens title="ContextScreen Component" loading={context.loading.show} />
+  );
 };
 
 export default ContextScreen;
