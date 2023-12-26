@@ -1,13 +1,24 @@
 import React, { PropsWithChildren } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Loading } from '../..';
 
-type TScreensType = PropsWithChildren & { title: string };
+type TScreensType = PropsWithChildren & { title: string; loading?: boolean };
 
-export const TScreens = ({ children, title }: TScreensType) => {
+export const TScreens = ({
+  children,
+  title,
+  loading = false,
+}: TScreensType) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      {children}
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Text style={styles.title}>{title}</Text>
+          {children}
+        </>
+      )}
     </View>
   );
 };
@@ -17,12 +28,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 10,
-    marginVertical: 10,
+    marginHorizontal: 20,
+    marginVertical: 20,
     gap: 15,
+    backgroundColor: '#fff',
+    shadowColor: 'black',
+    elevation: 5,
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: 'black',
   },
 });
